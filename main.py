@@ -14,6 +14,27 @@ bot: Bot = Bot(token=BOT_TOKEN)
 dp: Dispatcher = Dispatcher()
 
 
+@dp.message(Command(commands=['start']))
+async def process_start_command(message: Message):
+    """
+    Function to greet the user.
+    :param message: command '/start'
+    :return: welcome message
+    """
+    await message.answer('Привет!\nЯ бот, который станет для тебя другом и помощником.\nНапиши мне что-нибудь!')
+
+
+@dp.message(Command(commands=['help']))
+async def process_help_command(message: Message):
+    """
+    Function to help the user.
+    :param message: command '/help'
+    :return: sending a message about the capabilities of the bot
+    """
+    await message.answer('Задай мне интересующий тебя вопрос или скажи, что я могу для тебя сделать. \n'
+                         'Через мгновение я пришлю тебе ответ на твое сообщение.')
+
+
 @dp.message()
 async def answer(message: Message):
     """
